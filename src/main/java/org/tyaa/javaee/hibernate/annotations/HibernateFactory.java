@@ -15,8 +15,11 @@ public class HibernateFactory {
         cfg.setProperty("hibernate.connection.password", "root");
         cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
         cfg.setProperty("show_sql", "true");
-        cfg.setProperty("hibernate.hbm2ddl.auto", "create");
+        cfg.setProperty("hibernate.hbm2ddl.auto", "update");
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.User.class);
+        cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.Role.class);
+        cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.UserDetails.class);
+        cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.Repository.class);
         sessionFactory = cfg.buildSessionFactory();
     }
 
