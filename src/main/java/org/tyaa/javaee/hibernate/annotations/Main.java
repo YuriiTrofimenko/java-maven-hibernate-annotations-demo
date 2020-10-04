@@ -92,13 +92,13 @@ public class Main {
             ); */
 
             System.out.println("***");
-            CriteriaQuery<Role> cr2 = cb.createQuery(Role.class);
-            Root<Role> root2 = cr2.from(Role.class);
+            cr = cb.createQuery(Role.class);
+            root = cr.from(Role.class);
             // На этот раз добавляем в объект-конструктор кроме фрагмента SELECT
             // еще и фрагмент WHERE (WHERE Roles.title <> 'guest')
-            cr2.select(root)
+            cr.select(root)
                     .where(cb.not(cb.equal(root.get("title"), "admin")));
-            TypedQuery<Role> query2 = session.createQuery(cr2);
+            TypedQuery<Role> query2 = session.createQuery(cr);
             query2.getResultList().forEach(
                     (role -> {
                         System.out.println("Role:");
